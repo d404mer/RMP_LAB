@@ -6,6 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,16 @@ public class Ishgl extends AppCompatActivity {
             return insets;
         });
 
+        TextView textView = findViewById(R.id.mainTextView);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Ishgl.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         Button btnOpenTours = findViewById(R.id.button);
 
         btnOpenTours.setOnClickListener(new View.OnClickListener(){
@@ -39,16 +50,31 @@ public class Ishgl extends AppCompatActivity {
             }
         });
 
-        // Добавляем обработку свайпа
+        // обработка свайпов
         gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if (e1.getX() > e2.getX()) {
-                    // Свайп влево — переход на Cermat
+                    // свайп влево
                     Intent intent = new Intent(Ishgl.this, cermat.class);
                     startActivity(intent);
                 }
+                    // свайп вправо
+                else if (e1.getX() < e2.getX())
+                {
+                    Intent intent = new Intent(Ishgl.this, alta.class);
+                    startActivity(intent);
+                }
                 return true;
+            }
+        });
+
+        TextView textView2 = findViewById(R.id.Gallery);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Ishgl.this, Ishgl.class);
+                startActivity(intent);
             }
         });
     }

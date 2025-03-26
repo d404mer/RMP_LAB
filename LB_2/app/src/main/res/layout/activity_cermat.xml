@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".cermat"
-    android:background="@drawable/back2">
+    android:background="@drawable/snowy2">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Главная"
+            android:id="@+id/mainTextView"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -33,6 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/Gallery"
             android:text="Галерея"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
@@ -88,7 +90,7 @@
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="#673AB7"
+            android:backgroundTint="#500C0C7C"
 
             android:text="Узнать новое"
             android:textSize="20dp"
