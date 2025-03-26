@@ -63,8 +63,9 @@ public class alta extends AppCompatActivity {
 
         // Настройка свайпов
         View mainView = findViewById(R.id.main);
-        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
-        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, cermat.class, Ishgl.class));
-    }
+        // слева, справа, снизу, сверху
+        mainView.setOnTouchListener(new SwipeHandler(this, cermat.class, Ishgl.class, MainActivity.class, scroll_alta.class));
+        // findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class, scroll_alta.class, MainActivity.class));
 
+    }
 }

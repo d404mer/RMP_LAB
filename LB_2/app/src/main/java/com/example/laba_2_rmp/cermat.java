@@ -61,7 +61,11 @@ public class cermat extends AppCompatActivity {
 
         // Настройка свайпов
         View mainView = findViewById(R.id.main);
-        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
-        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class));
+
+        // справа, слева, снизу, сверху
+        mainView.setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class, MainActivity.class, scroll_cermat.class));
+
+        //mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
+        // findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class));
     }
 }

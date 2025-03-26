@@ -32,8 +32,9 @@ public class Ishgl extends AppCompatActivity {
 
         // Настройка свайпов
         View mainView = findViewById(R.id.main);
-        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
-        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
+
+        // справа, слева, снизу, сверху
+        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class, MainActivity.class, scrll_ishgli.class));
 
         Button btnOpenTours = findViewById(R.id.button);
         btnOpenTours.setOnClickListener(v -> {

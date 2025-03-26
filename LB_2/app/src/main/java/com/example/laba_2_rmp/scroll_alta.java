@@ -41,5 +41,11 @@ public class scroll_alta extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Настройка свайпов
+        View mainView = findViewById(R.id.main);
+
+        // справа, слева, снизу, сверху
+        mainView.setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class, MainActivity.class, alta.class));
     }
 }

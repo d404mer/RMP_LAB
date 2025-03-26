@@ -40,5 +40,11 @@ public class scroll_cermat extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Настройка свайпов
+        View mainView = findViewById(R.id.main);
+
+        // справа, слева, снизу, сверху
+        mainView.setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class, MainActivity.class, scroll_cermat.class));
     }
 }
