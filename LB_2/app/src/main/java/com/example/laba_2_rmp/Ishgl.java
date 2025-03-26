@@ -30,57 +30,29 @@ public class Ishgl extends AppCompatActivity {
             return insets;
         });
 
-        TextView textView = findViewById(R.id.mainTextView);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Ishgl.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        // Настройка свайпов
+        View mainView = findViewById(R.id.main);
+        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
+        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
 
         Button btnOpenTours = findViewById(R.id.button);
-
-        btnOpenTours.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Ishgl.this, scrll_ishgli.class);
-                startActivity(intent);
-            }
+        btnOpenTours.setOnClickListener(v -> {
+            Intent intent = new Intent(Ishgl.this, scrll_ishgli.class);
+            startActivity(intent);
         });
 
-        // обработка свайпов
-        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getX() > e2.getX()) {
-                    // свайп влево
-                    Intent intent = new Intent(Ishgl.this, cermat.class);
-                    startActivity(intent);
-                }
-                    // свайп вправо
-                else if (e1.getX() < e2.getX())
-                {
-                    Intent intent = new Intent(Ishgl.this, alta.class);
-                    startActivity(intent);
-                }
-                return true;
-            }
+        TextView mainTextView = findViewById(R.id.mainTextView);
+        mainTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(Ishgl.this, MainActivity.class);
+            startActivity(intent);
         });
 
-        TextView textView2 = findViewById(R.id.Gallery);
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Ishgl.this, Ishgl.class);
-                startActivity(intent);
-            }
+        TextView gallery = findViewById(R.id.Gallery);
+        gallery.setOnClickListener(v -> {
+            Intent intent = new Intent(Ishgl.this, alta.class);
+            startActivity(intent);
         });
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event) || super.onTouchEvent(event);
-    }
+
 }

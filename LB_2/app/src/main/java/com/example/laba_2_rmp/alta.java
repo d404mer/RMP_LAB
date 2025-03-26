@@ -29,6 +29,7 @@ public class alta extends AppCompatActivity {
             return insets;
         });
 
+
         TextView textView2 = findViewById(R.id.Gallery);
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +50,6 @@ public class alta extends AppCompatActivity {
             }
         });
 
-// Делаем текст кликабельным визуально
-        textView.setClickable(true);
-        textView.setFocusable(true);
-// Опционально: добавляем эффект при нажатии
-        textView.setBackgroundResource(android.R.drawable.list_selector_background);
-
 
         Button btnOpenTours = findViewById(R.id.button);
 
@@ -66,30 +61,10 @@ public class alta extends AppCompatActivity {
             }
         });
 
-        // обработка свайпов
-        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getX() > e2.getX()) {
-                    // -->
-                    Intent intent = new Intent(alta.this, Ishgl.class);
-                    startActivity(intent);
-                }
-                // <--
-                else if (e1.getX() < e2.getX())
-                {
-                    Intent intent = new Intent(alta.this, cermat.class);
-                    startActivity(intent);
-                }
-                return true;
-            }
-        });
-
-
+        // Настройка свайпов
+        View mainView = findViewById(R.id.main);
+        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
+        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, cermat.class, Ishgl.class));
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event) || super.onTouchEvent(event);
-    }
 }

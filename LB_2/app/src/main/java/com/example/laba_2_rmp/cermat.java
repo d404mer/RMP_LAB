@@ -59,28 +59,9 @@ public class cermat extends AppCompatActivity {
         });
 
 
-        // обработка свайпов
-        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getX() > e2.getX()) {
-                    // -->
-                    Intent intent = new Intent(cermat.this, alta.class);
-                    startActivity(intent);
-                }
-                // <--
-                else if (e1.getX() < e2.getX())
-                {
-                    Intent intent = new Intent(cermat.this, Ishgl.class);
-                    startActivity(intent);
-                }
-                return true;
-            }
-        });
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event) || super.onTouchEvent(event);
+        // Настройка свайпов
+        View mainView = findViewById(R.id.main);
+        mainView.setOnTouchListener(new SwipeHandler(this, alta.class, cermat.class));
+        findViewById(R.id.main).setOnTouchListener(new SwipeHandler(this, Ishgl.class, alta.class));
     }
 }
