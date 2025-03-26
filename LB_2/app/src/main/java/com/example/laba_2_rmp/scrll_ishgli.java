@@ -1,9 +1,11 @@
 package com.example.laba_2_rmp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -71,5 +73,16 @@ public class scrll_ishgli extends AppCompatActivity {
                 return false;
             }
         });
+
+        Button btnOpenTours = findViewById(R.id.button);
+        btnOpenTours.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent myWebLink = new Intent(android.content.Intent.ACTION_VIEW);
+                myWebLink.setData(Uri.parse("https://github.com/d404mer/RMP_LAB"));
+                startActivity(myWebLink);
+            }
+        });
+
     }
 }
